@@ -1,20 +1,23 @@
 import React from 'react';
 
-export default class App extends React.Component {
+export default class App extends React.Component { // makes it a react component
   constructor(props) {
     super(props);
     this.state = {
-      
+      toggle: true
     };
+    this.onClickHandler = this.onClickHandler.bind(this)
   }
 
-  //handler goes here
+  onClickHandler() {
+    this.setState((state) => {return {toggle: !state.toggle}})
+  }
 
   render() {
     return (
       <div>
         <p>Greetings!</p>
-        <p>Button goes here</p>
+        <button onClick={this.onClickHandler}>{this.state.toggle ? 'click me!': 'thanks'}</button>
       </div>
     );
   }
